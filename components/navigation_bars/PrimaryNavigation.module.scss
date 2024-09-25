@@ -1,0 +1,37 @@
+@use "../../scss/util" as u;
+
+.navigation {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-transform: uppercase;
+  padding: u.rem(10px) u.rem(15px);
+  gap: u.rem(30px);
+
+  &__home {
+    color: u.$red-additional !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: u.rem(15px);
+  }
+
+  &__link {
+    $font-base: 20px;
+    font-size: u.rem($font-base);
+    font-weight: 400;
+    transition: all 0.2s ease-out;
+
+    &--active {
+      color: u.$text-primary !important;
+      font-weight: 600;
+      transform: none !important;
+    }
+
+    &:hover {
+      color: u.$text-p-shader1;
+      transform: translateY(u.rem(-1.5px));
+    }
+  }
+}

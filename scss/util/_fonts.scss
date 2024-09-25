@@ -1,0 +1,36 @@
+@font-face {
+  font-family: "Quasimoda";
+  src: url("/fonts/quasimoda_regular.ttf") format(truetype);
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Quasimoda";
+  src: url("/fonts/quasimoda_ligth.otf") format(opentype);
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Quasimoda";
+  src: url("/fonts/quasimoda_medium.ttf") format(truetype);
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Quasimoda";
+  src: url("/fonts/quasimoda_semibold.ttf") format(truetype);
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Quasimoda";
+  src: url("/fonts/quasimoda_extra_bold.otf") format(opentype);
+  font-weight: 800;
+  font-style: normal;
+}
+
+$font: "Quasimoda", sans-serif;
