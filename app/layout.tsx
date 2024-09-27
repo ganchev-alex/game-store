@@ -1,4 +1,4 @@
-import PrimaryNavigationBar from "@/components/navigation_bars/PrimaryNavigationBar";
+import PrimaryNavigationBar from "@/components/home_page_components/primary_navigation/PrimaryNavigationBar";
 
 import "../scss/styles.scss";
 

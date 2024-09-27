@@ -1,9 +1,2 @@
 @use "../util/functions" as f;
 @use "../util" as u;
-
-h3 {
-  $font-base: 20px;
-  font-size: f.rem($font-base);
-  font-weight: 700;
-  margin: f.em(15px, $font-base) auto;
-}

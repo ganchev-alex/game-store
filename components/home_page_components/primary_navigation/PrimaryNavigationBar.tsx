@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import styles from "./PrimaryNavigation.module.scss";
 
-import tokenSrc from "../../public/assets/icons/token.png";
+import tokenSrc from "../../../public/assets/icons/token.png";
 import { usePathname } from "next/navigation";
 
 const PrimaryNavigationBar: React.FC = function () {
@@ -19,7 +19,7 @@ const PrimaryNavigationBar: React.FC = function () {
   return (
     <nav className={styles.navigation}>
       <Link href={"/"} className={styles["navigation__home"]}>
-        <Image src={tokenSrc} alt="Site Logo" width={50} height={50} />
+        <Image src={tokenSrc} alt="Site Logo" width={35} height={35} />
         <h3>Game Store</h3>
       </Link>
       {linkData.map((set, key) => (
