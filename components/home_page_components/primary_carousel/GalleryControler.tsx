@@ -87,6 +87,7 @@ const GalleryController: React.FC<{
       <div className={styles.pagination}>
         {Array.from({ length }, (_, i) => (
           <div
+            key={i}
             style={
               i === index % length
                 ? {

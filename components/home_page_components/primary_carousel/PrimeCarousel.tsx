@@ -7,6 +7,7 @@ import CarouselSlot from "./CarouselSlot";
 import GalleryController from "./GalleryControler";
 
 import styles from "./PrimaryCarousel.module.scss";
+import HomeNavigation from "./HomeNavigation";
 
 const dummyData: CarouselDataSlot[] = [
   {
@@ -68,6 +69,7 @@ const PrimeCarousel: React.FC = function () {
         })`,
       }}
     >
+      <HomeNavigation />
       <motion.img
         key={index}
         initial={{ x: 35 }}
