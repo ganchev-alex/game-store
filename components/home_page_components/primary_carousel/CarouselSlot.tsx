@@ -32,7 +32,12 @@ const CarouselSlot: React.FC<{
       />
       <span className={styles["slot__status"]}>{props.stateTag}</span>
       <p className={styles["slot__description"]}>{props.description}</p>
-      <span className={styles["slot__price"]}>Starting at {props.price} $</span>
+      {props.price != 0 && (
+        <span className={styles["slot__price"]}>
+          {props.discount ? `${props.discount}% Off - ` : ""} Starting at{" "}
+          {props.price} €
+        </span>
+      )}
       <menu className={styles["slot__buttons"]}>
         <button>Buy Now</button>
         <button>
