@@ -1,0 +1,58 @@
+@use "../../../scss/util" as u;
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: u.em(85px) auto u.em(20px);
+
+  h2 {
+    font-size: u.rem(32px);
+    font-weight: bold;
+    text-transform: uppercase;
+    color: u.$text-primary;
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+    align-items: center;
+
+    & button {
+      background-color: transparent;
+      border: none;
+      width: fit-content;
+      height: fit-content;
+
+      & img {
+        width: 25px;
+        height: 25px;
+      }
+
+      &:first-child {
+        transform: rotate(90deg);
+      }
+
+      &:nth-child(2) {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+}
+
+.grid {
+  display: grid;
+  margin: 0 auto;
+  width: 90%;
+  height: fit-content;
+
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, u.em(250px));
+  gap: 1em;
+
+  & div:first-child {
+    grid-row: 1 / 3;
+  }
+}
