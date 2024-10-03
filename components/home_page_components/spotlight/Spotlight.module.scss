@@ -25,6 +25,8 @@
       border: none;
       width: fit-content;
       height: fit-content;
+      cursor: pointer;
+      transition: opacity 0.4s ease-out;
 
       & img {
         width: 25px;
@@ -48,9 +50,9 @@
   width: 90%;
   height: fit-content;
 
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, calc(100% / 3 - 0.8em));
   grid-template-rows: repeat(2, u.em(250px));
-  gap: 1em;
+  grid-gap: 1em;
 
   & div:first-child {
     grid-row: 1 / 3;
