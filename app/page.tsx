@@ -2,6 +2,7 @@ import PrimeCarousel from "@/components/home_page_components/primary_carousel/Pr
 import Spotlight from "@/components/home_page_components/spotlight/Spotlight";
 
 import { IGameResult } from "../utility/interfaces/IGameResult";
+import GenresGrid from "@/components/home_page_components/genres/GenresGrid";
 
 const getSpotlightData = async function () {
   console.log(
@@ -31,6 +32,7 @@ export default async function Home() {
     <>
       <PrimeCarousel />
       <Spotlight gamesData={spotlightData} />
+      <GenresGrid />
     </>
   );
 }

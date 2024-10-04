@@ -51,11 +51,11 @@ const Spotlight: React.FC<{ gamesData: IGameResult[] }> = function ({
           </button>
         </span>
       </div>
-      <div className={styles.grid}>
+      <section className={styles.grid}>
         {gamesData.slice(startIndex, startIndex + 5).map((game, index) => (
           <CardSlot key={game.id} gameData={game} primaryOffer={index === 0} />
         ))}
-      </div>
+      </section>
     </React.Fragment>
   );
 };

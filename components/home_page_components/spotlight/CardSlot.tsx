@@ -43,7 +43,7 @@ const CardSlot: React.FC<{ gameData: IGameResult; primaryOffer: boolean }> =
         <div className={styles.display}>
           <span className={styles["display__titles"]}>
             <h5>{gameData.name}</h5>
-            <p>
+            <p suppressHydrationWarning>
               {primaryOffer
                 ? `Weekly Offer Ends in: ${countDown.days} days and ${padZero(
                     countDown.hours

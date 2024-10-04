@@ -1,0 +1,15 @@
+@use "../../../scss/util" as u;
+
+.title {
+  margin: u.em(85px, 32px) auto u.em(20px, 32px);
+  width: 90%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(2, u.em(125px));
+  grid-gap: 1em;
+  width: 90%;
+  margin: 0 auto;
+}
