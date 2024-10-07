@@ -8,8 +8,9 @@ const GenresGrid: React.FC = function () {
     <>
       <h2 className={styles.title}>Browse By Genre or Theme</h2>
       <section className={styles.grid}>
-        {genreData.map((genreData) => (
+        {genreData.map((genreData, index) => (
           <Genre
+            key={index}
             genre={genreData.genre}
             thumb={genreData.thumb}
             filterColor={genreData.filterColor}

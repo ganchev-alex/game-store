@@ -1,0 +1,24 @@
+@use "../../../scss/util" as u;
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: u.em(20px);
+  width: 90%;
+  margin: u.em(150px, 32px) auto u.em(32px, 32px);
+
+  & h4 {
+    font-size: u.rem(20px);
+    color: u.$red-additional;
+  }
+}
+
+.sale {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  height: fit-content;
+  margin: 0 auto;
+  gap: u.em(25px);
+}

@@ -1,0 +1,130 @@
+@use "../../../scss/util" as u;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 15%;
+  height: fit-content;
+  position: relative;
+  flex: 0 0 15%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &__button {
+    position: absolute;
+    z-index: 2;
+    top: u.em(15px);
+    right: u.em(15px);
+    width: 25px;
+    height: 25px;
+    border: none;
+    border-radius: 100%;
+    background-color: rgba(0, 0, 0, 0.35);
+    outline: none;
+    display: none;
+    cursor: pointer;
+
+    &:hover::before {
+      display: inline-block;
+      content: "Add to Whishlist";
+      position: absolute;
+      top: 50%;
+      right: u.em(35px, 10px);
+      transform: translateY(-55%);
+      background-color: u.$primary;
+      color: u.$text-primary;
+      font-size: u.rem(10px);
+      padding: u.em(3px, 10px) u.em(10px, 10px) u.em(1.5px, 10px);
+      z-index: 2;
+      text-wrap: nowrap;
+      font-family: "Quasimoda";
+      font-weight: 300;
+      text-transform: uppercase;
+    }
+
+    & img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__thumb {
+    width: 100%;
+    height: u.em(425px);
+    position: relative;
+
+    & img,
+    & div {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    & div {
+      background-color: u.$text-primary;
+      opacity: 0;
+      z-index: 1;
+      transition: opacity 0.3s ease;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:hover &__thumb div {
+    opacity: 0.2;
+  }
+
+  &:hover &__button {
+    display: block;
+  }
+
+  &__title {
+    width: 100%;
+    height: fit-content;
+    font-size: u.rem(16.5px);
+    margin: u.em(5px, 16.5px) 0 u.em(3px, 16.5px);
+    color: u.$text-primary;
+    font-weight: 400;
+    text-wrap: nowrap;
+    max-width: 60%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.prices {
+  display: flex;
+  align-items: center;
+  height: fit-content;
+  $base-font: 14.5px;
+  gap: u.em(10px, $base-font);
+
+  & p {
+    font-size: u.rem($base-font);
+  }
+
+  &__percentage {
+    background-color: u.$labels-primary;
+    color: u.$primary;
+    font-weight: 700;
+    padding: 0 u.em(5px, $base-font);
+    // margin-right: u.em(10px, $base-font);
+  }
+
+  &__original {
+    color: u.$text-s-shader1;
+    text-decoration: line-through;
+    // margin-right: u.em(10px, $base-font);
+  }
+
+  &__sale {
+    font-size: u.rem(calc($base-font + 1px));
+    color: u.$text-primary;
+  }
+}
