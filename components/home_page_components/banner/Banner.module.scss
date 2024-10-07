@@ -1,0 +1,43 @@
+@use "../../../scss/util" as u;
+
+.banner {
+  width: 90%;
+  height: u.em(175px);
+  margin: u.em(100px) auto u.em(50px);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+
+  &__background {
+    position: absolute;
+    z-index: -1;
+    object-fit: cover;
+    transform: rotate(15deg);
+    filter: grayscale(0.8);
+    opacity: 0.6;
+    transition: all 0.3s ease-out;
+  }
+
+  &:hover &__background {
+    filter: none;
+    opacity: 0.65;
+  }
+
+  &__title {
+    font-size: u.rem(38px);
+    color: u.$text-primary;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  &__description {
+    font-size: u.rem(16.5px);
+    color: u.$text-primary;
+    font-weight: 500;
+    text-align: center;
+  }
+}

@@ -1,9 +1,12 @@
+import React from "react";
+
 import PrimeCarousel from "@/components/home_page_components/primary_carousel/PrimeCarousel";
 import Spotlight from "@/components/home_page_components/spotlight/Spotlight";
 
 import { IGameResult } from "../utility/interfaces/IGameResult";
 import GenresGrid from "@/components/home_page_components/genres/GenresGrid";
 import FlashSale from "@/components/home_page_components/flash_sales/FlashSale";
+import Banner from "@/components/home_page_components/banner/Banner";
 
 const getSpotlightData = async function () {
   try {
@@ -53,6 +56,7 @@ export default async function Home() {
       />
       <GenresGrid />
       <FlashSale flashSaleData={flashSaleData} />
+      <Banner />
     </>
   );
 }
