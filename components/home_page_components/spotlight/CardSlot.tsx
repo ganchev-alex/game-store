@@ -1,10 +1,15 @@
 "use client";
-
 import { useState, useEffect } from "react";
-import { easeIn, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 import styles from "./CardSlot.module.scss";
+
 import { IGameResult } from "@/utility/interfaces/IGameResult";
+import {
+  getTimeRemaining,
+  padZero,
+} from "@/utility/functions/timersManagement";
+import { getRandomSalePrice } from "@/utility/functions/pricesManagement";
 
 const CardSlot: React.FC<{ gameData: IGameResult; primaryOffer: boolean }> =
   function ({ gameData, primaryOffer }) {
@@ -20,7 +25,12 @@ const CardSlot: React.FC<{ gameData: IGameResult; primaryOffer: boolean }> =
         setCountDown(getTimeRemaining(!primaryOffer));
       }, 1000);
 
-      setPriceData(getRandomSalePrice());
+      setPriceData(
+        getRandomSalePrice(
+          [59.99, 49.99, 39.99],
+          [10, 10, 10, 10, 10, 10, 25, 25, 25, 25, 25, 50, 50, 50, 50, 60, 90]
+        )
+      );
 
       return () => clearInterval(interval);
     }, []);
@@ -68,72 +78,5 @@ const CardSlot: React.FC<{ gameData: IGameResult; primaryOffer: boolean }> =
       </motion.div>
     );
   };
-
-function padZero(num: number) {
-  return num < 10 ? `0${num}` : num.toString();
-}
-
-function getTimeRemaining(daily: boolean) {
-  const now = new Date();
-
-  if (daily) {
-    const endOfDay = new Date(
-      now.getFullYear(),
-      now.getMonth(),
-      now.getDate(),
-      23,
-      59,
-      59,
-      999
-    );
-    const timeDiff = endOfDay.getTime() - now.getTime();
-
-    const hours = Math.floor(timeDiff / (1000 * 60 * 60));
-    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
-
-    return { hours, minutes, seconds };
-  } else {
-    const dayOfWeek = now.getDay();
-    const daysRemaining = 6 - dayOfWeek;
-
-    const endOfWeek = new Date(
-      now.getFullYear(),
-      now.getMonth(),
-      now.getDate() + daysRemaining,
-      23,
-      59,
-      59,
-      999
-    );
-    const timeDiff = endOfWeek.getTime() - now.getTime();
-
-    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor(
-      (timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    );
-    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
-
-    return { days, hours, minutes, seconds };
-  }
-}
-
-function getRandomSalePrice() {
-  const prices = [59.99, 49.99, 39.99];
-  const percentages = [
-    10, 10, 10, 10, 10, 10, 25, 25, 25, 25, 25, 50, 50, 50, 50, 60, 90,
-  ];
-
-  const price = prices[Math.floor(Math.random() * prices.length)];
-  const percentage =
-    percentages[Math.floor(Math.random() * percentages.length)];
-
-  return {
-    salePrice: (price - price * (percentage / 100)).toFixed(2),
-    actualPrice: price,
-    percentage,
-  };
-}
 
 export default CardSlot;

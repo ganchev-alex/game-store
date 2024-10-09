@@ -1,0 +1,36 @@
+@use "../../../scss/util" as u;
+
+.column {
+  display: flex;
+  flex-direction: column;
+  width: 32%;
+  flex: 0 0 32%;
+  gap: u.em(15px);
+
+  &__title {
+    display: flex;
+    gap: u.em(16px);
+    align-items: center;
+    width: 100%;
+
+    & h5 {
+      font-size: u.rem(22.5px);
+      color: u.$text-primary;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    & button {
+      background-color: transparent;
+      border: u.$text-primary;
+      color: u.$text-primary;
+      width: fit-content;
+      height: fit-content;
+      padding: u.em(7px, 14.5px) u.em(10px, 14.5px);
+      font-size: u.rem(14.5px);
+      border: u.$text-primary 1px solid;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+  }
+}

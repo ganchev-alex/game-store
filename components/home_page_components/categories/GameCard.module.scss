@@ -1,0 +1,52 @@
+@use "../../../scss/util" as u;
+
+.card {
+  display: flex;
+  width: 100%;
+  height: u.em(155px);
+
+  &__thumb {
+    height: 100%;
+    width: 25%;
+    object-fit: cover;
+    margin: 0 u.em(20px) 0 u.em(7px);
+  }
+
+  &__details {
+    max-width: 69.5%;
+  }
+
+  &__title {
+    font-size: u.rem(20px);
+    color: u.$text-primary;
+    margin: u.em(15px, 20px) 0 u.em(1px, 20px);
+    font-weight: 400;
+    text-wrap: nowrap;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &__genres {
+    font-size: u.rem(14.5px);
+    color: u.$text-secondary;
+  }
+
+  &__platforms {
+    display: flex;
+    align-items: center;
+    margin: u.em(10.5px) 0;
+
+    & img {
+      width: 18.5px;
+      height: 18.5px;
+      margin: 0 u.em(3px);
+    }
+  }
+
+  &__price {
+    font-size: u.rem(14.5px);
+    color: u.$text-primary;
+    margin-right: u.em(10px, 13px);
+  }
+}
