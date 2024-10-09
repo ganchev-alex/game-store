@@ -12,7 +12,11 @@ const Column: React.FC<{ sectionTitle: string; gamesData: IGameResult[] }> =
           <button>See More</button>
         </div>
         {gamesData.map((game) => (
-          <GameCard gameData={game} isUpcoming={sectionTitle === "Upcoming"} />
+          <GameCard
+            key={game.id}
+            gameData={game}
+            isUpcoming={sectionTitle === "Upcoming"}
+          />
         ))}
       </div>
     );

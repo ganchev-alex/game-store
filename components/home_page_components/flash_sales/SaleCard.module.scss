@@ -92,7 +92,8 @@
     color: u.$text-primary;
     font-weight: 400;
     text-wrap: nowrap;
-    max-width: 60%;
+    max-width: 95%;
+    overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
   }

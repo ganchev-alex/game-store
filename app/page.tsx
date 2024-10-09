@@ -34,24 +34,39 @@ const generateGameData = async function (argParams: any) {
 
 const paramsSets = [
   {
-    // New & Treanding
+    // Spotligth
+    page_size: 15,
+    metacritics: "60,80",
+    ordering: "-added",
+    dates: "2015-01-01,2022-12-31",
+    platforms: "4,5,1,18,7",
+  },
+  {
+    // Flash sale
     page_size: 6,
+    ordering: "-metacritic",
+    dates: "2023-01-01,2023-12-31",
+    plaforms: "4,5,1,18,7",
+  },
+  {
+    // New & Treanding
+    page_size: 5,
     ordering: "-added",
     dates: "2024-01-01,2024-09-30",
     platforms: "4,5,1,18,7",
   },
   {
     // Top Sellers
-    page_size: 6,
-    ordering: "-rating",
+    page_size: 5,
+    ordering: "-metacritics",
     dates: "2021-01-01,2023-12-31",
     platforms: "4,5,1,18,7",
   },
   {
     // Upcoming
-    page_size: 6,
+    page_size: 5,
     ordering: "-added",
-    tba: "true",
+    dates: "2024-10-10,2025-12-31",
     platforms: "4,5,1,18,7",
   },
 ];
