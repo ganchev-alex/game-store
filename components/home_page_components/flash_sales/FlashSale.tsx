@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 
-import SaleCard from "./SaleCard";
+import DisplayCard from "./DisplayCard";
 
 import styles from "./FlashSale.module.scss";
 import { IGameResult } from "../../../utility/interfaces/IGameResult";
@@ -27,10 +27,11 @@ const FlashSale: React.FC<{ flashSaleData: IGameResult[] }> = function ({
       </span>
       <section className={styles.sale}>
         {flashSaleData.map((gameData) => (
-          <SaleCard
+          <DisplayCard
             key={gameData.id}
             gameTitle={gameData.name}
             thumb={gameData.background_image}
+            saleMode={true}
           />
         ))}
       </section>
