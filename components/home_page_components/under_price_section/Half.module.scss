@@ -1,0 +1,23 @@
+@use "../../../scss/util" as u;
+
+.wrapper {
+  height: fit-content;
+  width: 47.5%;
+  flex: 0 0 47.5%;
+
+  &__title {
+    font-size: u.rem(26px);
+    text-transform: uppercase;
+    color: u.$text-primary;
+    font-weight: 700;
+    margin: u.em(50px) 0 u.em(10px);
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: u.em(10px);
+    height: u.em(355px);
+  }
+}

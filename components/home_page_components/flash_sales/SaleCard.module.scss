@@ -115,13 +115,11 @@
     color: u.$primary;
     font-weight: 700;
     padding: 0 u.em(5px, $base-font);
-    // margin-right: u.em(10px, $base-font);
   }
 
   &__original {
     color: u.$text-s-shader1;
     text-decoration: line-through;
-    // margin-right: u.em(10px, $base-font);
   }
 
   &__sale {

@@ -8,6 +8,7 @@ import GenresGrid from "@/components/home_page_components/genres/GenresGrid";
 import FlashSale from "@/components/home_page_components/flash_sales/FlashSale";
 import Banner from "@/components/home_page_components/banner/Banner";
 import Categories from "@/components/home_page_components/categories/Categories";
+import UnderPrice from "@/components/home_page_components/under_price_section/UnderPrice";
 
 const generateGameData = async function (argParams: any) {
   const params = Object.entries(argParams)
@@ -44,7 +45,7 @@ const paramsSets = [
   {
     // Flash sale
     page_size: 6,
-    ordering: "-metacritic",
+    ordering: "-added",
     dates: "2023-01-01,2023-12-31",
     plaforms: "4,5,1,18,7",
   },
@@ -69,12 +70,26 @@ const paramsSets = [
     dates: "2024-10-10,2025-12-31",
     platforms: "4,5,1,18,7",
   },
+  {
+    // Under 10 $ and 20 $
+    page_size: 12,
+    page: 10,
+    ordering: "-added",
+    dates: "2022-01-01,2023-12-31",
+    platforms: "4,5,1,18,7",
+  },
 ];
 
 export default async function Home() {
   const promisedData = paramsSets.map((params) => generateGameData(params));
-  const [spotlight, flashSale, newAndTrending, topSellers, upcoming] =
-    await Promise.all(promisedData);
+  const [
+    spotlight,
+    flashSale,
+    newAndTrending,
+    topSellers,
+    upcoming,
+    underPrice,
+  ] = await Promise.all(promisedData);
 
   return (
     <>
@@ -92,6 +107,7 @@ export default async function Home() {
         topSellers={topSellers}
         upcoming={upcoming}
       />
+      <UnderPrice underPrice={underPrice} />
     </>
   );
 }
