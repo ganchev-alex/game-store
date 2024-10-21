@@ -1,7 +1,7 @@
 import Half from "./Half";
 
 import { IGameResult } from "@/utility/interfaces/IGameResult";
-import style from "./UnderFile.module.scss";
+import style from "./UnderPrice.module.scss";
 
 const UnderPrice: React.FC<{ underPrice: IGameResult[] }> = function ({
   underPrice,
