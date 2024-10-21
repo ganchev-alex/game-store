@@ -1,0 +1,16 @@
+@use "../../../scss/util" as u;
+
+.title {
+  width: 90%;
+  margin: u.em(125px, 32px) auto u.em(32px, 32px);
+}
+
+.grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  height: fit-content;
+  margin: 0 auto;
+  gap: u.em(25px);
+}

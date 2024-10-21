@@ -2,8 +2,9 @@
 
 .section {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 90%;
   height: u.em(450px);
-  gap: u.em(17.5px);
   margin: 0 auto;
 }

@@ -9,6 +9,7 @@ import FlashSale from "@/components/home_page_components/flash_sales/FlashSale";
 import Banner from "@/components/home_page_components/banner/Banner";
 import Categories from "@/components/home_page_components/categories/Categories";
 import UnderPrice from "@/components/home_page_components/under_price_section/UnderPrice";
+import AdditionalGrid from "@/components/home_page_components/additional_grids/AdditionalGrid";
 
 const generateGameData = async function (argParams: any) {
   const params = Object.entries(argParams)
@@ -78,6 +79,19 @@ const paramsSets = [
     dates: "2022-01-01,2023-12-31",
     platforms: "4,5,1,18,7",
   },
+  {
+    // Recently Updated
+    page_size: 6,
+    page: 12,
+    ordering: "-updated",
+    platforms: "4,5,1,18,7",
+  },
+  {
+    // VR Games
+    page_size: 6,
+    tags: "vr",
+    ordering: "-added",
+  },
 ];
 
 export default async function Home() {
@@ -89,6 +103,8 @@ export default async function Home() {
     topSellers,
     upcoming,
     underPrice,
+    recentlyUpdated,
+    vrGames,
   ] = await Promise.all(promisedData);
 
   return (
@@ -108,6 +124,8 @@ export default async function Home() {
         upcoming={upcoming}
       />
       <UnderPrice underPrice={underPrice} />
+      <AdditionalGrid title="Recently Updated" gamesData={recentlyUpdated} />
+      <AdditionalGrid title="VR Selection" gamesData={vrGames} />
     </>
   );
 }
