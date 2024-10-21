@@ -10,6 +10,8 @@ import Banner from "@/components/home_page_components/banner/Banner";
 import Categories from "@/components/home_page_components/categories/Categories";
 import UnderPrice from "@/components/home_page_components/under_price_section/UnderPrice";
 import AdditionalGrid from "@/components/home_page_components/additional_grids/AdditionalGrid";
+import LoginBanner from "@/components/home_page_components/login_banner/LoginBanner";
+import Footer from "@/components/home_page_components/footer/Footer";
 
 const generateGameData = async function (argParams: any) {
   const params = Object.entries(argParams)
@@ -110,11 +112,9 @@ export default async function Home() {
   return (
     <>
       <PrimeCarousel />
-      {
-        <Spotlight
-          gamesData={spotlight.filter((game) => game.name !== "Apex Legends")}
-        />
-      }
+      <Spotlight
+        gamesData={spotlight.filter((game) => game.name !== "Apex Legends")}
+      />
       <GenresGrid />
       <FlashSale flashSaleData={flashSale} />
       <Banner />
@@ -126,6 +126,7 @@ export default async function Home() {
       <UnderPrice underPrice={underPrice} />
       <AdditionalGrid title="Recently Updated" gamesData={recentlyUpdated} />
       <AdditionalGrid title="VR Selection" gamesData={vrGames} />
+      <LoginBanner />
     </>
   );
 }

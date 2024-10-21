@@ -1,4 +1,5 @@
 import PrimaryNavigationBar from "@/components/home_page_components/primary_navigation/PrimaryNavigationBar";
+import Footer from "@/components/home_page_components/footer/Footer";
 
 import "../scss/styles.scss";
 
@@ -17,6 +18,7 @@ export default function RootLayout({
       <body>
         <PrimaryNavigationBar />
         {children}
+        <Footer />
       </body>
     </html>
   );

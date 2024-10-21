@@ -1,0 +1,79 @@
+@use "../../../scss/util" as u;
+
+.banner {
+  width: 100%;
+  height: fit-content;
+  margin-top: u.em(75px);
+  background: rgb(60, 64, 152);
+  background: linear-gradient(
+    125deg,
+    rgba(60, 64, 152, 1) 0%,
+    rgba(22, 130, 112, 1) 100%
+  );
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+    padding: u.em(20px) 0;
+  }
+
+  &__avatars {
+    width: 37.5%;
+    min-width: 460px;
+    height: auto;
+  }
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  width: 40%;
+
+  &__title {
+    color: u.$text-primary;
+    font-size: u.rem(26px);
+    font-weight: 500;
+  }
+
+  &__p1 {
+    color: u.$text-primary;
+    font-size: u.rem(15.5px);
+    font-weight: 300;
+    margin-top: u.em(-10px, 15.5px);
+  }
+
+  &__button {
+    background-color: u.$labels-shader1;
+    color: u.$text-primary;
+    border: none;
+    outline: none;
+    width: fit-content;
+    height: fit-content;
+    font-size: u.rem(14px);
+    padding: u.em(17px, 18px) u.em(45px, 18px);
+    margin: u.em(7px, 18px) 0 0;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+
+    &:hover {
+      filter: brightness(115%);
+    }
+  }
+
+  &__p2 {
+    color: u.$grey-additional;
+    font-size: u.rem(15px);
+    font-weight: 500;
+
+    & a {
+      color: u.$text-primary;
+      cursor: pointer;
+    }
+  }
+}

@@ -53,7 +53,10 @@ const DisplayCard: React.FC<{
             -{priceData.percentage}%
           </p>
         )}
-        <p className={styles["prices__original"]}>
+        <p
+          className={styles["prices__original"]}
+          style={saleMode ? {} : { color: "white", textDecoration: "none" }}
+        >
           € {typeof priceData == "number" ? priceData : priceData.actualPrice}
         </p>
         {saleMode && typeof priceData != "number" && (

@@ -1,0 +1,112 @@
+@use "../../../scss/util" as u;
+
+.footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  padding: u.em(100px) 0 u.em(35px);
+  gap: u.em(45px);
+  background-color: u.$primary-shader1;
+  position: relative;
+
+  &__links {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    gap: u.em(65px);
+    border-bottom: u.$text-s-shader1 1px solid;
+    padding-bottom: u.em(50px);
+  }
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+    gap: u.em(7px);
+    height: fit-content;
+
+    & h6 {
+      font-size: u.rem(15px);
+      color: u.$text-primary;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
+    & ul {
+      list-style: none;
+      color: u.$text-s-shader1;
+      font-size: u.em(15px);
+      font-weight: 500;
+
+      & li:hover {
+        transition: color 0.2s ease-out;
+        color: u.$green-additional;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__bottom {
+    width: 90%;
+    margin: 0 auto;
+
+    & p {
+      color: u.$text-s-shader1;
+      margin-top: u.em(15px);
+      width: 35%;
+    }
+
+    & a {
+      font-weight: 800;
+
+      &:hover {
+        transition: color 0.2s ease-out;
+        color: u.$green-additional;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__credentials {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    gap: u.em(20px);
+
+    & h5 {
+      font-size: u.rem(30px);
+      text-transform: uppercase;
+      color: u.$primary;
+      background-color: u.$red-additional;
+      font-weight: 700;
+      padding: 0 u.em(5px);
+    }
+
+    & h6 {
+      font-size: u.rem(28px);
+      color: u.$text-primary;
+      font-weight: 500;
+    }
+  }
+
+  &__contacts {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    position: absolute;
+    bottom: u.em(50px);
+    right: u.em(100px);
+    gap: u.em(15px);
+
+    & img {
+      width: 40px;
+      height: 40px;
+      transition: all 0.3s ease-out;
+
+      &:hover {
+        filter: brightness(175%);
+        cursor: pointer;
+      }
+    }
+  }
+}

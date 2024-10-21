@@ -25,6 +25,10 @@
     transition: opacity 0.3s ease;
   }
 
+  &:hover {
+    cursor: pointer;
+  }
+
   &:hover &__filter {
     opacity: 0.2;
   }

@@ -19,7 +19,6 @@ const AdditionalGrid: React.FC<{ title: string; gamesData: IGameResult[] }> =
               key={gameData.id}
               gameTitle={gameData.name}
               thumb={gameData.background_image}
-              saleMode={true}
             />
           ))}
         </section>
