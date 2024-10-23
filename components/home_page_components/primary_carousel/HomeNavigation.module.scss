@@ -80,6 +80,8 @@
   &__dropdown {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    gap: 0;
     visibility: hidden;
     transform: translateY(-10px);
     opacity: 0;
@@ -100,6 +102,10 @@
 
       &:first-child {
         margin-top: u.em(20px);
+      }
+
+      &:hover {
+        color: u.$green-additional;
       }
     }
   }

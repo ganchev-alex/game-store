@@ -1,4 +1,5 @@
 import React from "react";
+import { Variants } from "framer-motion";
 
 import { IGameResult } from "../utility/interfaces/IGameResult";
 
@@ -96,6 +97,72 @@ const paramsSets = [
   },
 ];
 
+interface IVariants {
+  scrollFadeUp: Variants;
+  scrollFadeDown: Variants;
+  scrollFadeLeft: Variants;
+  scrollFadeRigth: Variants;
+}
+
+const variants: IVariants = {
+  scrollFadeUp: {
+    offScreen: {
+      y: 75,
+      opacity: 0,
+    },
+    onScreen: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        duration: 1,
+      },
+    },
+  },
+  scrollFadeDown: {
+    offScreen: {
+      y: -100,
+      opacity: 0,
+    },
+    onScreen: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        duration: 1,
+      },
+    },
+  },
+  scrollFadeLeft: {
+    offScreen: {
+      x: -100,
+      opacity: 0,
+    },
+    onScreen: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        duration: 1,
+      },
+    },
+  },
+  scrollFadeRigth: {
+    offScreen: {
+      x: 100,
+      opacity: 0,
+    },
+    onScreen: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        duration: 1,
+      },
+    },
+  },
+};
+
 export default async function Home() {
   const promisedData = paramsSets.map((params) => generateGameData(params));
   const [
@@ -114,18 +181,35 @@ export default async function Home() {
       <PrimeCarousel />
       <Spotlight
         gamesData={spotlight.filter((game) => game.name !== "Apex Legends")}
+        scrollVariants={variants.scrollFadeUp}
       />
-      <GenresGrid />
-      <FlashSale flashSaleData={flashSale} />
-      <Banner />
+      <GenresGrid scrollVariants={variants.scrollFadeUp} />
+      <FlashSale
+        flashSaleData={flashSale}
+        scrollVariants={variants.scrollFadeUp}
+      />
+      <Banner scrollVariants={variants.scrollFadeDown} />
       <Categories
         newAndTrending={newAndTrending}
         topSellers={topSellers}
         upcoming={upcoming}
+        scrollVariants={variants.scrollFadeDown}
       />
-      <UnderPrice underPrice={underPrice} />
-      <AdditionalGrid title="Recently Updated" gamesData={recentlyUpdated} />
-      <AdditionalGrid title="VR Selection" gamesData={vrGames} />
+      <UnderPrice
+        underPrice={underPrice}
+        scrollVariantsLeft={variants.scrollFadeLeft}
+        scrollVariantsRigth={variants.scrollFadeRigth}
+      />
+      <AdditionalGrid
+        title="Recently Updated"
+        gamesData={recentlyUpdated}
+        scrollVariants={variants.scrollFadeUp}
+      />
+      <AdditionalGrid
+        title="VR Selection"
+        gamesData={vrGames}
+        scrollVariants={variants.scrollFadeUp}
+      />
       <LoginBanner />
     </>
   );

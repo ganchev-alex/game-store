@@ -1,14 +1,16 @@
 "use client";
 import { useState, useEffect } from "react";
+import { motion, Variants } from "framer-motion";
 
 import DisplayCard from "./DisplayCard";
 
 import styles from "./FlashSale.module.scss";
 import { IGameResult } from "../../../utility/interfaces/IGameResult";
 
-const FlashSale: React.FC<{ flashSaleData: IGameResult[] }> = function ({
-  flashSaleData,
-}) {
+const FlashSale: React.FC<{
+  flashSaleData: IGameResult[];
+  scrollVariants: Variants;
+}> = function ({ flashSaleData, scrollVariants }) {
   const [timeLeft, setTimeLeft] = useState(0);
 
   useEffect(() => {
@@ -20,7 +22,12 @@ const FlashSale: React.FC<{ flashSaleData: IGameResult[] }> = function ({
     return () => clearInterval(timer);
   }, []);
   return (
-    <>
+    <motion.div
+      initial="offScreen"
+      whileInView="onScreen"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={scrollVariants}
+    >
       <span className={styles.title}>
         <h2>Flash Sale</h2>
         <h4 suppressHydrationWarning>Ends is: {formatTime(timeLeft)} hours</h4>
@@ -35,7 +42,7 @@ const FlashSale: React.FC<{ flashSaleData: IGameResult[] }> = function ({
           />
         ))}
       </section>
-    </>
+    </motion.div>
   );
 };
 

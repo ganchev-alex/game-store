@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { motion, Variants } from "framer-motion";
 
 import CardSlot from "./CardSlot";
 
@@ -9,9 +10,10 @@ import styles from "./Spotlight.module.scss";
 import arrowSrc from "../../../public/assets/icons/arrow.png";
 import { IGameResult } from "@/utility/interfaces/IGameResult";
 
-const Spotlight: React.FC<{ gamesData: IGameResult[] }> = function ({
-  gamesData,
-}) {
+const Spotlight: React.FC<{
+  gamesData: IGameResult[];
+  scrollVariants: Variants;
+}> = function ({ gamesData, scrollVariants }) {
   const [startIndex, setStartIndex] = useState(0);
 
   const swipeGames = function (increment: boolean) {
@@ -31,7 +33,12 @@ const Spotlight: React.FC<{ gamesData: IGameResult[] }> = function ({
   };
 
   return (
-    <React.Fragment>
+    <motion.div
+      initial="offScreen"
+      whileInView="onScreen"
+      variants={scrollVariants}
+      viewport={{ once: true, amount: 0.05 }}
+    >
       <div className={styles.heading}>
         <h2>Spotlight</h2>
         <span className={styles["heading__controls"]}>
@@ -56,7 +63,7 @@ const Spotlight: React.FC<{ gamesData: IGameResult[] }> = function ({
           <CardSlot key={game.id} gameData={game} primaryOffer={index === 0} />
         ))}
       </section>
-    </React.Fragment>
+    </motion.div>
   );
 };
 

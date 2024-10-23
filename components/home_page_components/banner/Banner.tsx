@@ -1,11 +1,21 @@
+"use client";
+import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 
 import styles from "./Banner.module.scss";
 import backgroundSrc from "../../../public/assets/images/stacked_games.png";
 
-const Banner: React.FC = function () {
+const Banner: React.FC<{ scrollVariants: Variants }> = function ({
+  scrollVariants,
+}) {
   return (
-    <section className={styles.banner}>
+    <motion.section
+      className={styles.banner}
+      initial="offScreen"
+      whileInView="onScreen"
+      variants={scrollVariants}
+      viewport={{ once: true, amount: 1 }}
+    >
       <Image
         src={backgroundSrc}
         alt="Stacked video games covers"
@@ -16,7 +26,7 @@ const Banner: React.FC = function () {
         A look back at the year's best sellers, <br /> best new realeases, most
         play games and more!
       </h5>
-    </section>
+    </motion.section>
   );
 };
 
