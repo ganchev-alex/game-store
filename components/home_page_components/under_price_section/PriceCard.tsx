@@ -9,7 +9,7 @@ import styles from "./PriceCard.module.scss";
 import windowsSrc from "../../../public/assets/icons/windows-platform-logo.png";
 import macSrc from "../../../public/assets/icons/mac-os-logo.png";
 import xboxSrc from "../../../public/assets/icons/xbox-logo.png";
-import ps4Src from "../../../public/assets/icons/ps4.png";
+import playStationSrc from "../../../public/assets/icons/play-station.png";
 import nintendoSrc from "../../../public/assets/icons/nintendo-switch.png";
 
 const PriceCard: React.FC<{ gameData: IGameResult; isUnderTen: boolean }> =
@@ -48,7 +48,7 @@ const PriceCard: React.FC<{ gameData: IGameResult; isUnderTen: boolean }> =
             ) && <Image src={xboxSrc} alt="Xbox Logo" />}
             {gameData.platforms.some(
               (platform) => platform.platform.id === 18
-            ) && <Image src={ps4Src} alt="PS4 Logo" />}
+            ) && <Image src={playStationSrc} alt="Play Station Logo" />}
             {gameData.platforms.some(
               (platform) => platform.platform.id === 7
             ) && <Image src={nintendoSrc} alt="Nindendo Logo" />}

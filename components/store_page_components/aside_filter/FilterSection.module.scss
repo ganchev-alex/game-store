@@ -1,0 +1,51 @@
+@use "../../../scss/util" as u;
+
+.section {
+  padding: u.em(10px) u.em(25px) u.em(10px);
+
+  &__title {
+    font-size: u.rem(15.5px);
+    font-weight: 700;
+    color: u.$text-secondary;
+    transition: all 0.3s ease-out;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &--toggled {
+      color: u.$text-primary;
+    }
+
+    & img {
+      width: 12.5px;
+      height: 12.5px;
+    }
+
+    &:hover {
+      filter: brightness(125%);
+    }
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0 0 u.em(7px) u.em(7px);
+  }
+
+  &__option {
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: u.rem(16px);
+    font-family: u.$font;
+    color: u.$text-primary;
+    font-weight: 300;
+    color: u.$text-primary;
+    transition: all 0.3s ease-out;
+
+    &:hover {
+      color: u.$green-additional;
+      cursor: pointer;
+    }
+  }
+}

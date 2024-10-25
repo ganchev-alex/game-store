@@ -1,0 +1,62 @@
+export const topCharts = [
+  { criteria: "", name: "Top Sellers of the Year" },
+  { criteria: "", name: "Last Year's Favourites" },
+  { criteria: "", name: "All Time Sellers" },
+];
+
+export const newRealeses = [
+  { criteria: "", name: "New and Trending" },
+  { criteria: "", name: "Last 30 days" },
+  { criteria: "", name: "Next Week" },
+];
+
+export const genres = [
+  { id: 1, name: "Action" },
+  { id: 2, name: "Adventure" },
+  { id: 3, name: "RPG" },
+  { id: 4, name: "Strategy" },
+  { id: 5, name: "Shooter" },
+  { id: 6, name: "Casual" },
+  { id: 7, name: "Simulation" },
+  { id: 8, name: "Puzzle" },
+  { id: 9, name: "Platformer" },
+  { id: 10, name: "Horror" },
+  { id: 11, name: "Racing" },
+  { id: 12, name: "Sports" },
+  { id: 13, name: "Massively Multiplayer" },
+  { id: 14, name: "Card Game" },
+  { id: 15, name: "Board Games" },
+  { id: 16, name: "Educational" },
+  { id: 17, name: "Music" },
+  { id: 18, name: "Text-Based" },
+  { id: 19, name: "Idle" },
+];
+
+export const tags = [
+  { id: 1, name: "Multiplayer" },
+  { id: 2, name: "Single Player" },
+  { id: 3, name: "Co-op" },
+  { id: 4, name: "Open World" },
+  { id: 5, name: "Fantasy" },
+  { id: 6, name: "Sci-Fi" },
+  { id: 7, name: "Space" },
+  { id: 8, name: "Zombie" },
+  { id: 9, name: "Stealth" },
+  { id: 10, name: "Ninja" },
+  { id: 11, name: "Survival" },
+  { id: 12, name: "Exploration" },
+  { id: 13, name: "Action RPG" },
+  { id: 14, name: "Turn-Based" },
+  { id: 15, name: "First-Person" },
+  { id: 16, name: "Third-Person" },
+  { id: 17, name: "Retro" },
+  { id: 18, name: "Indie" },
+  { id: 19, name: "Virtual Reality" },
+  { id: 20, name: "Augmented Reality" },
+  { id: 21, name: "Horror" },
+  { id: 22, name: "Gambling" },
+  { id: 23, name: "Roguelike" },
+  { id: 24, name: "Roguelite" },
+  { id: 26, name: "Fantasy RPG" },
+  { id: 27, name: "MMORPG" },
+];

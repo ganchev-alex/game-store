@@ -10,7 +10,7 @@ import plusSrc from "../../../public/assets/icons/plus.png";
 import windowsSrc from "../../../public/assets/icons/windows-platform-logo.png";
 import macSrc from "../../../public/assets/icons/mac-os-logo.png";
 import xboxSrc from "../../../public/assets/icons/xbox-logo.png";
-import ps4Src from "../../../public/assets/icons/ps4.png";
+import playStationSrc from "../../../public/assets/icons/play-station.png";
 import nintendoSrc from "../../../public/assets/icons/nintendo-switch.png";
 
 const GameCard: React.FC<{ gameData: IGameResult; isUpcoming: boolean }> =
@@ -70,7 +70,7 @@ const GameCard: React.FC<{ gameData: IGameResult; isUpcoming: boolean }> =
             ) && <Image src={xboxSrc} alt="Xbox Logo" />}
             {gameData.platforms.some(
               (platform) => platform.platform.id === 18
-            ) && <Image src={ps4Src} alt="PS4 Logo" />}
+            ) && <Image src={playStationSrc} alt="Play Station Logo" />}
             {gameData.platforms.some(
               (platform) => platform.platform.id === 7
             ) && <Image src={nintendoSrc} alt="Nindendo Logo" />}

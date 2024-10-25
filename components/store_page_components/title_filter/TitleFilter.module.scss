@@ -1,0 +1,94 @@
+@use "../../../scss/util" as u;
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 87.5%;
+  height: fit-content;
+  margin: u.em(45px) auto u.em(10px);
+
+  & h3 {
+    color: u.$text-primary;
+    font-size: u.rem(22px);
+  }
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: fit-content;
+  gap: u.em(10px);
+
+  &__layout {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & img {
+      width: 22.5px;
+      height: 22.5px;
+    }
+
+    &--active {
+      opacity: 1;
+    }
+
+    &--disabled {
+      opacity: 0.6;
+      transition: all 0.2s ease-out;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__search {
+    $font-size: 17.5px;
+    display: flex;
+    align-items: center;
+    gap: u.em(15px, $font-size);
+    width: u.em(375px);
+    height: fit-content;
+    margin-left: u.em(15px, $font-size);
+    padding: u.em(3.5px, $font-size) u.em(10px, $font-size);
+    background-color: u.$primary-shader2;
+    border: u.$primary-shader1 2px solid;
+    border-radius: 5px;
+
+    & img {
+      height: 22.5px;
+      width: 22.5px;
+    }
+
+    & input {
+      width: 90%;
+      font-family: u.$font;
+      font-size: u.rem($font-size);
+      color: u.$text-primary;
+      font-weight: 500;
+      outline: none;
+      border: none;
+      background-color: u.$primary-shader2;
+
+      &::placeholder {
+        font-size: u.rem($font-size - 1px);
+        font-weight: 400;
+        color: u.$text-secondary;
+      }
+
+      &::-webkit-search-cancel-button {
+        -webkit-appearance: none;
+        appearance: none;
+      }
+    }
+  }
+}

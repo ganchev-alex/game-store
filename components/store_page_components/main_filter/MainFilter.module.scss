@@ -1,0 +1,108 @@
+@use "../../../scss/util" as u;
+
+.filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: u.em(25px) u.em(40px);
+  background-color: u.$primary-shader1;
+  border-radius: 5px;
+  flex: 0 0 82.5%;
+  height: fit-content;
+  position: sticky;
+  top: 20px;
+
+  &__label {
+    color: u.$text-primary;
+    font-size: u.em(13.5px);
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-right: u.em(25px);
+  }
+
+  &__sub {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    gap: u.em(45px);
+  }
+
+  &__select-wrapper {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+  }
+
+  &__select-label {
+    color: u.$text-secondary;
+    font-size: u.em(14.5px);
+    font-weight: 600;
+  }
+
+  &__select {
+    background-color: transparent;
+    font-size: u.em(15.5px);
+    color: u.$text-primary;
+    font-family: u.$font;
+    outline: none;
+    border: none;
+    padding: u.em(5px, 15.5px) u.em(15px, 15.5px);
+    transition: all 0.3 ease-out;
+    cursor: pointer;
+
+    & option {
+      background-color: u.$primary-shader2;
+      font-size: u.em(14px);
+    }
+
+    &:hover {
+      opacity: 0.65;
+    }
+  }
+}
+
+.property {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  padding-right: u.em(20px);
+  border-right: u.$text-secondary 1px solid;
+
+  &__button {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    margin-right: u.em(15px);
+    font-size: u.rem(14px);
+    color: u.$text-primary;
+    font-family: u.$font;
+    position: relative;
+    transition: all 0.2s ease-out;
+
+    &:hover {
+      transform: translateY(-2px);
+      opacity: 1;
+      cursor: pointer;
+    }
+
+    & img {
+      height: 22.5px;
+      width: 22.5px;
+    }
+
+    &--active {
+      opacity: 1;
+    }
+
+    &--disabled {
+      opacity: 0.6;
+    }
+  }
+}

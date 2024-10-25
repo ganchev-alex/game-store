@@ -1,0 +1,32 @@
+@use "../../../scss/util" as u;
+
+.filter {
+  flex: 0 0 15.5%;
+  background-color: u.$primary-shader1;
+  border-radius: 5px;
+  max-height: 95vh;
+  height: fit-content;
+  overflow: auto;
+  position: sticky;
+  top: 20px;
+  padding: u.em(10px) 0;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: u.$primary-shader1;
+    border-radius: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: u.$primary-shader2;
+    border-radius: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: u.$grey-additional;
+    cursor: grab;
+  }
+}
