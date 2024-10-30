@@ -5,12 +5,36 @@
   align-items: center;
   justify-content: space-between;
   padding: u.em(25px) u.em(40px);
-  background-color: u.$primary-shader1;
   border-radius: 5px;
-  flex: 0 0 82.5%;
+  width: 100%;
   height: fit-content;
   position: sticky;
   top: 20px;
+  z-index: 10;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &::before {
+    width: 102%;
+    height: 115%;
+    background-color: u.$primary;
+    z-index: -100;
+  }
+
+  &::after {
+    width: 100%;
+    height: 100%;
+    background-color: u.$primary-shader1;
+    z-index: -99;
+    border-radius: 5px;
+  }
 
   &__label {
     color: u.$text-primary;

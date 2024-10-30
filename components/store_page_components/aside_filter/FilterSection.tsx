@@ -61,7 +61,7 @@ const FilterSection: React.FC<{
     | { id: number; name: string }[]
     | { criteria: string; name: string }[];
 }> = function ({ title, dataSet }) {
-  const [toggleState, setToggleState] = useState(true);
+  const [toggleState, setToggleState] = useState(false);
 
   return (
     <div className={styles.section}>

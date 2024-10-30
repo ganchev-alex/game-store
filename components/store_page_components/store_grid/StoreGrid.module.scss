@@ -1,0 +1,8 @@
+@use "../../../scss/util" as u;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: u.em(25px);
+  margin: u.em(15px) 0;
+}
