@@ -5,7 +5,7 @@ export interface IGameResult {
   platforms: { platform: { id: number; name: string; slug: string } }[];
   stores: { store: { id: number; name: string; slug: string } }[];
   released: string;
-  tba: boolean; // To be announced
+  tba: boolean;
   background_image: string;
   rating: number;
   rating_top: number;
@@ -26,7 +26,16 @@ export interface IGameResult {
   updated: string;
   id: number;
   score: any | undefined;
-  clip: any | undefined;
+  clip: {
+    clip: string;
+    clips: {
+      320: string;
+      640: string;
+      full: string;
+    };
+    video: string;
+    preview: string;
+  };
   tags: {
     id: number;
     name: string;

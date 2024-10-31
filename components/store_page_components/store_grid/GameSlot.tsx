@@ -1,17 +1,22 @@
 "use client";
+import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+
+import { IGameResult } from "@/utility/interfaces/IGameResult";
 
 import styles from "./GameSlot.module.scss";
 import windowsSrc from "../../../public/assets/icons/windows-platform-logo.png";
 import macSrc from "../../../public/assets/icons/mac-os-logo.png";
+import linuxSrc from "../../../public/assets/icons/linux.png";
 import xboxSrc from "../../../public/assets/icons/xbox-logo.png";
 import playStationSrc from "../../../public/assets/icons/play-station.png";
 import nintendoSrc from "../../../public/assets/icons/nintendo-switch.png";
 import cartSrc from "../../../public/assets/icons/cart.png";
-import plusSrc from "../../../public/assets/icons/plus.png";
 
-const GameSlot: React.FC = function () {
+const GameSlot: React.FC<{ gameData: IGameResult }> = function ({ gameData }) {
+  const [previewIndex, setPreviewIndex] = useState(1);
+
   return (
     <motion.div
       className={styles.slot}
@@ -23,22 +28,58 @@ const GameSlot: React.FC = function () {
         damping: 20,
       }}
     >
-      <div className={styles.visuals}>
-        {/* Background Image */}
+      <div className={styles["slot__visuals"]}>
         <img
-          src="https://assets.nintendo.com/image/upload/q_auto/f_auto/ncom/software/switch/70010000084608/ba0572bf9d840b03bf9958809943fb3c76c3adfd6d8f2704b0f1b766f8aa4027"
-          className={styles["visuals__thumb"]}
+          src={gameData.background_image}
+          className={styles["slot__thumb"]}
         />
-        <div>{/* Preview: Video and Screenshots */}</div>
+        <div className={styles["slot__preview"]}>
+          <img src={gameData.short_screenshots[previewIndex].image} />
+          <div className={styles["slot__navigation"]}>
+            {Array.from(
+              { length: gameData.short_screenshots.length },
+              (_, i) => (
+                <span
+                  key={i}
+                  style={{
+                    width: `${90 / gameData.short_screenshots.length}%`,
+                    opacity: `${i === previewIndex ? 1 : 0.45}`,
+                  }}
+                  onMouseEnter={() => setPreviewIndex(i)}
+                />
+              )
+            )}
+          </div>
+        </div>
       </div>
       <div className={styles.description}>
         <span className={styles["description__platforms"]}>
-          <Image src={windowsSrc} alt="Windows Logo" />
-          <Image src={macSrc} alt="MacOS Logo" />
+          {gameData.platforms != null ? (
+            <>
+              {gameData.platforms.some(
+                (platform) => platform.platform.id === 4
+              ) && <Image src={windowsSrc} alt="Windows Logo" />}
+              {gameData.platforms.some(
+                (platform) => platform.platform.id === 5
+              ) && <Image src={macSrc} alt="MacOS Logo" />}
+              {gameData.platforms.some(
+                (platform) => platform.platform.id === 3
+              ) && <Image src={linuxSrc} alt="Linux Logo" />}
+              {gameData.platforms.some(
+                (platform) => platform.platform.id === 1
+              ) && <Image src={xboxSrc} alt="Xbox Logo" />}
+              {gameData.platforms.some(
+                (platform) => platform.platform.id === 18
+              ) && <Image src={playStationSrc} alt="Play Station Logo" />}
+              {gameData.platforms.some(
+                (platform) => platform.platform.id === 7
+              ) && <Image src={nintendoSrc} alt="Nindendo Logo" />}
+            </>
+          ) : (
+            <Image src={windowsSrc} alt="Windows Logo" />
+          )}
         </span>
-        <h5 className={styles["description__title"]}>
-          Game Title Title TitleTitleTitle TitleTitle
-        </h5>
+        <h5 className={styles["slot__title"]}>{gameData.name}</h5>
         <div className={styles["description__actions"]}>
           <button className={styles["slot__add"]}>
             <Image src={cartSrc} alt="Add To Cart Button" />
@@ -50,15 +91,20 @@ const GameSlot: React.FC = function () {
       <div className={styles["slot__additional"]}>
         <span>
           <h6>Release Date:</h6>
-          <p>02.12.24</p>
+          <p>{gameData.released}</p>
         </span>
         <span>
-          <h6>Genres:</h6>
-          <p>Party Games, Board Games</p>
+          <h6>Rating:</h6>
+          <p>{gameData.rating} / 5</p>
         </span>
         <span style={{ border: "none" }}>
-          <h6>Keywords:</h6>
-          <p>Board Games, Party, Fun</p>
+          <h6>Genres:</h6>
+          <p>
+            {gameData.genres
+              .slice(0, 2)
+              .map((genre) => genre.name)
+              .join(", ")}
+          </p>
         </span>
         <button>Show more like this</button>
       </div>
