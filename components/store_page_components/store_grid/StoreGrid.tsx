@@ -1,19 +1,17 @@
 import GameSlot from "./GameSlot";
 
+import { IGameResult } from "@/utility/interfaces/IGameResult";
+
 import styles from "./StoreGrid.module.scss";
 
-const StoreGrid: React.FC = function () {
+const StoreGrid: React.FC<{ gamesData: IGameResult[] }> = function ({
+  gamesData,
+}) {
   return (
     <main className={styles.grid}>
-      <GameSlot />
-      <GameSlot />
-      <GameSlot />
-      <GameSlot />
-      <GameSlot />
-      <GameSlot />
-      <GameSlot />
-      <GameSlot />
-      <GameSlot />
+      {gamesData.map((dataSet) => (
+        <GameSlot key={dataSet.id} gameData={dataSet} />
+      ))}
     </main>
   );
 };

@@ -5,10 +5,33 @@
   display: flex;
   flex-direction: column;
   height: fit-content;
+  margin-top: u.em(25px);
   padding: u.em(100px) 0 u.em(35px);
   gap: u.em(45px);
   background-color: u.$primary-shader1;
   position: relative;
+
+  &__top-button {
+    position: absolute;
+    width: u.em(55px);
+    height: u.em(55px);
+    background-color: u.$primary;
+    border: none;
+    border-radius: 15px;
+    right: 5%;
+    top: 19%;
+    transition: all 0.2s ease;
+
+    & img {
+      width: 55%;
+      height: 55%;
+    }
+
+    &:hover {
+      cursor: pointer;
+      filter: brightness(125%);
+    }
+  }
 
   &__links {
     width: 90%;

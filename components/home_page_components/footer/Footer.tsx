@@ -4,10 +4,19 @@ import Image from "next/image";
 import styles from "./Footer.module.scss";
 import gitHubSrc from "../../../public/assets/icons/github.png";
 import linkedSrc from "../../../public/assets/icons/linkedin.png";
+import topSrc from "../../../public/assets/icons/top.png";
 
 const Footer: React.FC = function () {
   return (
     <footer className={styles.footer}>
+      <button
+        className={styles["footer__top-button"]}
+        onClick={() => {
+          window.scrollTo(0, 0);
+        }}
+      >
+        <Image src={topSrc} alt="Go To The Top" />
+      </button>
       <div className={styles["footer__links"]}>
         <div className={styles["footer__column"]}>
           <h6>Company</h6>

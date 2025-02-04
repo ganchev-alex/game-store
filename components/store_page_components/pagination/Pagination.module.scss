@@ -1,0 +1,75 @@
+@use "../../../scss/util" as u;
+
+.pagination {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: u.em(9px);
+  margin: u.em(75px) 0 u.em(90px);
+
+  & button,
+  & a {
+    font-family: u.$font;
+    $font-size: 17px;
+    font-size: $font-size;
+    font-weight: 500;
+    min-width: u.em(42.5px, $font-size);
+    width: fit-content;
+    padding: u.em(7.5px);
+    height: u.em(42.5px, $font-size);
+    border-radius: 5px;
+    border: none;
+    color: u.$text-primary;
+    background-color: u.$primary-shader1;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      filter: brightness(145%);
+    }
+  }
+
+  &__arrow {
+    position: relative;
+
+    & img {
+      width: 35%;
+      height: 35%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+    }
+  }
+
+  &__arrow:first-child {
+    transform: rotate(90deg);
+    & img {
+      transform: translate(-50%, -47.5%);
+    }
+  }
+
+  &__arrow:last-child {
+    transform: rotate(-90deg);
+    & img {
+      transform: translate(-50%, -47.5%);
+    }
+  }
+
+  &__indicator {
+    opacity: 0.75;
+    transform: scale(0.85);
+    background-color: transparent !important;
+    border: u.$text-p-shader1 1.5px solid !important;
+    color: u.$text-p-shader1;
+  }
+
+  &__active {
+    background-color: u.$blue-additional !important;
+    &:hover {
+      filter: brightness(100%) !important;
+    }
+  }
+}

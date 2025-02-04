@@ -56,21 +56,21 @@ const itemVariants = {
 };
 
 const FilterSection: React.FC<{
+  untoggled?: boolean;
   title: string;
   dataSet:
     | { id: number; name: string }[]
     | { criteria: string; name: string }[];
-}> = function ({ title, dataSet }) {
-  const [toggleState, setToggleState] = useState(false);
+}> = function ({ title, dataSet, untoggled }) {
+  const [toggleState, setToggleState] = useState(untoggled || false);
 
   return (
     <div className={styles.section}>
-      <motion.h6
+      <h6
         className={`${styles["section__title"]} ${
           toggleState ? "" : styles["section__title--toggled"]
         }`}
         onClick={() => setToggleState((previousState) => !previousState)}
-        layout
       >
         {title}
         <motion.div
@@ -80,7 +80,7 @@ const FilterSection: React.FC<{
         >
           <Image src={arrowSrc} alt="Toggle Icon" />
         </motion.div>
-      </motion.h6>
+      </h6>
       <AnimatePresence>
         {toggleState && (
           <motion.ul
