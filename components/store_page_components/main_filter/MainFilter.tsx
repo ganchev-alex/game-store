@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import styles from "./MainFilter.module.scss";
 
@@ -35,15 +36,30 @@ const storesSrc = [
 ];
 
 const options = [
-  { value: "-added", label: "Data added" },
-  { value: "-name", label: "Name" },
-  { value: "-date", label: "Release Date" },
-  { value: "-popularity", label: "Popularity" },
-  { value: "-metacritic", label: "Avg. Rating" },
+  { value: "default", label: "Popularity" },
+  { value: "added", label: "Data added" },
+  { value: "name", label: "Name" },
+  { value: "released", label: "Release Date" },
+  { value: "metacritic", label: "Avg. Rating" },
 ];
 
 const MainFilter: React.FC = function () {
   const [orderByStatement, setOrderByStatement] = useState("-added");
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  const params = new URLSearchParams(searchParams);
+
+  const applyOrdering = function (orderingId: string) {
+    switch (orderingId) {
+      case "default":
+      default:
+        params.delete("ordering");
+        break;
+    }
+
+    router.push(`?${params.toString()}`, { scroll: false });
+  };
 
   return (
     <menu className={styles.filter}>
@@ -86,7 +102,11 @@ const MainFilter: React.FC = function () {
           onChange={(e) => setOrderByStatement(e.target.value)}
         >
           {options.map((option) => (
-            <option value={option.value} key={option.value}>
+            <option
+              value={option.value}
+              key={option.value}
+              onClick={() => applyOrdering(option.value)}
+            >
               {option.label}
             </option>
           ))}

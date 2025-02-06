@@ -42,9 +42,17 @@
     font-weight: 300;
     color: u.$text-primary;
     transition: all 0.3s ease-out;
+    text-align: start;
 
     &:hover {
       color: u.$green-additional;
+      cursor: pointer;
+    }
+
+    &--active {
+      color: u.$green-additional;
+      font-weight: 600;
+      margin-left: u.em(7.5px);
       cursor: pointer;
     }
   }

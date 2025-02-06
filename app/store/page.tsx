@@ -8,12 +8,24 @@ import { IGameResult } from "@/utility/interfaces/IGameResult";
 import styles from "./Store.module.scss";
 import Pagination from "@/components/store_page_components/pagination/Pagination";
 
-const fetchStorePage = async function (page: number) {
+const recordsPerPage = 24;
+
+const fetchStorePage = async function (
+  page: number,
+  genres?: string,
+  tags?: string,
+  ordering?: string,
+  dates?: string
+) {
   try {
     const response = await fetch(
       `${process.env.API_ROOT}/games?key=${
         process.env.API_KEY
-      }&page_size=${20}&page=${page}`,
+      }&page_size=${recordsPerPage}&page=${page}${
+        genres ? `&genres=${genres}` : ""
+      }${tags ? `&tags=${tags}` : ""}${
+        ordering ? `&ordering=${ordering}` : ""
+      }${dates ? `&dates=${dates}` : ""}`,
       {
         cache: "force-cache",
       }
@@ -39,7 +51,13 @@ export default async function Store({
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
   const currentPage = Number(searchParams.page) || 1;
-  const { totalResults, gamesData } = await fetchStorePage(currentPage);
+  const { totalResults, gamesData } = await fetchStorePage(
+    currentPage,
+    searchParams.genres as string | undefined,
+    searchParams.tags as string | undefined,
+    searchParams.ordering as string | undefined,
+    searchParams.dates as string | undefined
+  );
 
   return (
     <>
@@ -52,7 +70,7 @@ export default async function Store({
           <StoreGrid gamesData={gamesData} />
           <Pagination
             currentPage={currentPage}
-            totalPages={Math.round(totalResults / 20)}
+            totalPages={Math.round(totalResults / recordsPerPage)}
           />
         </div>
       </div>

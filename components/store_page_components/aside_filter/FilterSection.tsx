@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Variants, motion, AnimatePresence } from "framer-motion";
+import { useSearchParams, useRouter } from "next/navigation";
 
 import styles from "./FilterSection.module.scss";
 import arrowSrc from "../../../public/assets/icons/arrow.png";
@@ -58,11 +59,38 @@ const itemVariants = {
 const FilterSection: React.FC<{
   untoggled?: boolean;
   title: string;
-  dataSet:
-    | { id: number; name: string }[]
-    | { criteria: string; name: string }[];
-}> = function ({ title, dataSet, untoggled }) {
+  dataSet: {
+    id?: number;
+    name: string;
+    criteria?: { key: string; value: string }[];
+  }[];
+  paramKey: string;
+}> = function ({ title, dataSet, untoggled, paramKey }) {
   const [toggleState, setToggleState] = useState(untoggled || false);
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  const params = new URLSearchParams(searchParams);
+
+  const updateMultipleChoiceFilter = function (value: string) {
+    const existingSelection =
+      params.get(paramKey)?.split(",").filter(Boolean) || [];
+
+    if (existingSelection.includes(value)) {
+      const newSelection = existingSelection.filter((v) => v !== value);
+      if (newSelection.length) {
+        params.set(paramKey, newSelection.join(","));
+      } else {
+        params.delete(paramKey);
+      }
+    } else {
+      existingSelection.push(value);
+      params.set(paramKey, existingSelection.join(","));
+    }
+
+    params.set("page", "1");
+    router.push(`?${params.toString()}`, { scroll: false });
+  };
 
   return (
     <div className={styles.section}>
@@ -90,13 +118,28 @@ const FilterSection: React.FC<{
             animate="open"
             exit="closed"
           >
-            {dataSet.map((set, index) => (
-              <motion.li key={index} variants={itemVariants}>
-                <button className={styles["section__option"]}>
-                  {set.name}
-                </button>
-              </motion.li>
-            ))}
+            {dataSet.map((set) => {
+              const isActive =
+                set.id &&
+                params.get(paramKey)?.split(",").includes(set.id.toString());
+
+              return (
+                <motion.li key={set.id || set.name} variants={itemVariants}>
+                  <button
+                    className={`${styles["section__option"]} ${
+                      isActive ? styles["section__option--active"] : ""
+                    }`}
+                    onClick={() => {
+                      updateMultipleChoiceFilter(
+                        set.id?.toString() || set.name
+                      );
+                    }}
+                  >
+                    {set.name}
+                  </button>
+                </motion.li>
+              );
+            })}
           </motion.ul>
         )}
       </AnimatePresence>

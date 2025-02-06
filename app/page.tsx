@@ -91,6 +91,7 @@ const paramsSets = [
   {
     // VR Games
     page_size: 6,
+    page: 3,
     tags: "vr",
     ordering: "-added",
   },

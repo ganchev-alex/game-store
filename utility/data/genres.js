@@ -1,7 +1,8 @@
 export const genres = [
   {
     genre: "action",
-    thumb: "https://wallpapershome.com/images/pages/pic_h/25060.jpg",
+    thumb:
+      "https://www.rgj.com/gcdn/-mm-/e8d4eff885dd6386f1bf5f02f8bd0fc66e7b3837/c=8-0-3831-2160/local/-/media/2016/05/24/RenoGroup/RGJ/635997112339447894-Doom-2016-Doomguy.jpg?width=660&height=373&fit=crop&format=pjpg&auto=webp",
     filterColor: "rgba(55, 6, 23, 0.25)",
   },
   {

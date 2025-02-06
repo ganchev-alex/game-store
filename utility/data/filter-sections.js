@@ -1,35 +1,23 @@
-export const topCharts = [
-  { criteria: "", name: "Top Sellers of the Year" },
-  { criteria: "", name: "Last Year's Favourites" },
-  { criteria: "", name: "All Time Sellers" },
-];
-
-export const newRealeses = [
-  { criteria: "", name: "New and Trending" },
-  { criteria: "", name: "Last 30 days" },
-  { criteria: "", name: "Next Week" },
-];
-
 export const genres = [
-  { id: 1, name: "Action" },
-  { id: 2, name: "Adventure" },
-  { id: 3, name: "RPG" },
-  { id: 4, name: "Strategy" },
-  { id: 5, name: "Shooter" },
-  { id: 6, name: "Casual" },
-  { id: 7, name: "Simulation" },
-  { id: 8, name: "Puzzle" },
-  { id: 9, name: "Platformer" },
-  { id: 10, name: "Horror" },
-  { id: 11, name: "Racing" },
-  { id: 12, name: "Sports" },
-  { id: 13, name: "Massively Multiplayer" },
-  { id: 14, name: "Card Game" },
-  { id: 15, name: "Board Games" },
-  { id: 16, name: "Educational" },
-  { id: 17, name: "Music" },
-  { id: 18, name: "Text-Based" },
-  { id: 19, name: "Idle" },
+  { id: 4, name: "Action" },
+  { id: 3, name: "Adventure" },
+  { id: 11, name: "Arcade" },
+  { id: 5, name: "RPG" },
+  { id: 10, name: "Strategy" },
+  { id: 2, name: "Shooter" },
+  { id: 40, name: "Casual" },
+  { id: 14, name: "Simulation" },
+  { id: 7, name: "Puzzle" },
+  { id: 83, name: "Platformer" },
+  { id: 1, name: "Racing" },
+  { id: 15, name: "Sports" },
+  { id: 59, name: "Massively Multiplayer" },
+  { id: 17, name: "Card Game" },
+  { id: 28, name: "Board Games" },
+  { id: 34, name: "Educational" },
+  { id: 19, name: "Family" },
+  { id: 51, name: "Idle" },
+  { id: 6, name: "Fighting" },
 ];
 
 export const tags = [

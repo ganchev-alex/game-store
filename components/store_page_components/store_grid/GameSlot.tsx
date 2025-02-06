@@ -15,16 +15,6 @@ import cartSrc from "../../../public/assets/icons/cart.png";
 
 const GameSlot: React.FC<{ gameData: IGameResult }> = function ({ gameData }) {
   const [hoveredIndicator, setHoveredIndicator] = useState(0);
-  const [isScreenshotLoaded, setIsScreenshotLoaded] = useState(false);
-
-  useEffect(() => {
-    if (!gameData.short_screenshots.length) return;
-
-    const img = new window.Image();
-    img.src = gameData.short_screenshots[hoveredIndicator].image;
-
-    img.onload = () => setIsScreenshotLoaded(true);
-  }, [hoveredIndicator]);
 
   return (
     <motion.div
@@ -44,30 +34,32 @@ const GameSlot: React.FC<{ gameData: IGameResult }> = function ({ gameData }) {
           src={gameData.background_image}
           className={styles["visuals__thumb"]}
         />
-        <div
-          className={styles["slot__screenshots"]}
-          style={{
-            backgroundImage: `url(${gameData.short_screenshots[hoveredIndicator].image})`,
-          }}
-        >
-          {Array.from(
-            { length: gameData.short_screenshots.length },
-            (_, index) => (
-              <div
-                key={index}
-                className={`${styles["visuals__indicator"]} ${
-                  index === hoveredIndicator
-                    ? styles["visuals__indicator--active"]
-                    : ""
-                }`}
-                style={{
-                  width: `calc(80% / ${gameData.short_screenshots.length})`,
-                }}
-                onMouseEnter={() => setHoveredIndicator(index)}
-              />
-            )
-          )}
-        </div>
+        {gameData.short_screenshots?.length > 0 && (
+          <div className={styles["slot__screenshots"]}>
+            <img
+              className={styles["slot__screenshot"]}
+              src={gameData.short_screenshots[hoveredIndicator].image}
+              alt={`Screenshot ${hoveredIndicator + 1}`}
+            />
+            {Array.from(
+              { length: gameData.short_screenshots.length },
+              (_, index) => (
+                <div
+                  key={index}
+                  className={`${styles["visuals__indicator"]} ${
+                    index === hoveredIndicator
+                      ? styles["visuals__indicator--active"]
+                      : ""
+                  }`}
+                  style={{
+                    width: `calc(80% / ${gameData.short_screenshots.length})`,
+                  }}
+                  onMouseEnter={() => setHoveredIndicator(index)}
+                />
+              )
+            )}
+          </div>
+        )}
       </div>
       <div className={styles.description}>
         <span className={styles["description__platforms"]}>
