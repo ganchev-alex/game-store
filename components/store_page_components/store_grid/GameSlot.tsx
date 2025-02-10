@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { IGameResult } from "@/utility/interfaces/IGameResult";
 import Image from "next/image";
@@ -12,6 +12,7 @@ import xboxSrc from "../../../public/assets/icons/xbox-logo.png";
 import playStationSrc from "../../../public/assets/icons/play-station.png";
 import nintendoSrc from "../../../public/assets/icons/nintendo-switch.png";
 import cartSrc from "../../../public/assets/icons/cart.png";
+import fallBackBackground from "../../../public/assets/images/fallback_background.webp";
 
 const GameSlot: React.FC<{ gameData: IGameResult }> = function ({ gameData }) {
   const [hoveredIndicator, setHoveredIndicator] = useState(0);
@@ -29,10 +30,13 @@ const GameSlot: React.FC<{ gameData: IGameResult }> = function ({ gameData }) {
       onMouseLeave={() => setHoveredIndicator(0)}
     >
       <div className={styles.visuals}>
-        <img
+        <Image
           loading="lazy"
-          src={gameData.background_image}
+          src={gameData.background_image || fallBackBackground}
+          alt={`${gameData.name} Preview`}
           className={styles["visuals__thumb"]}
+          width={650}
+          height={650}
         />
         {gameData.short_screenshots?.length > 0 && (
           <div className={styles["slot__screenshots"]}>
@@ -63,7 +67,7 @@ const GameSlot: React.FC<{ gameData: IGameResult }> = function ({ gameData }) {
       </div>
       <div className={styles.description}>
         <span className={styles["description__platforms"]}>
-          {gameData.platforms.some(
+          {gameData.platforms?.some(
             (platform) => platform.platform.id === 4
           ) && <Image src={windowsSrc} alt="Windows Logo" />}
           {gameData.platforms.some(
@@ -103,8 +107,8 @@ const GameSlot: React.FC<{ gameData: IGameResult }> = function ({ gameData }) {
           </p>
         </span>
         <span style={{ border: "none" }}>
-          <h6>Player's Rating:</h6>
-          <p>{gameData.rating} / 5.0</p>
+          <h6>Metacritic:</h6>
+          <p>{gameData.metacritic} / 100</p>
         </span>
         <button>Show more like this</button>
       </div>

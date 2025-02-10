@@ -73,8 +73,7 @@ const FilterSection: React.FC<{
   const params = new URLSearchParams(searchParams);
 
   const updateMultipleChoiceFilter = function (value: string) {
-    const existingSelection =
-      params.get(paramKey)?.split(",").filter(Boolean) || [];
+    const existingSelection = params.get(paramKey)?.split(",") || [];
 
     if (existingSelection.includes(value)) {
       const newSelection = existingSelection.filter((v) => v !== value);

@@ -1,0 +1,108 @@
+@use "../../../scss/util" as u;
+
+.results {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  width: 550px;
+  position: absolute;
+  top: 110%;
+  right: u.em(-1.5px);
+  border-radius: 3.5px;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 20;
+
+  &__backdrop {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: -1;
+  }
+}
+
+.slot {
+  display: flex;
+  align-items: center;
+  gap: u.em(25px);
+  width: 100%;
+  height: 135px;
+  padding: u.em(10px);
+  cursor: pointer;
+  transition: all 0.4s ease;
+
+  & h4 {
+    font-size: u.rem(17.5px);
+    color: u.$text-primary;
+  }
+
+  &:hover {
+    background-color: #3d3f9948;
+    height: 275px;
+  }
+
+  &__thumb {
+    width: 42.5%;
+    min-width: u.em(225px);
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__platforms {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    margin-top: u.em(12.5px);
+    gap: u.em(5px);
+
+    & img {
+      width: 15.5px;
+      height: 15.5px;
+    }
+  }
+
+  &:hover &__details {
+    display: block;
+  }
+
+  &__details {
+    display: none;
+    margin-top: u.em(25px);
+    transition: display 0.3s ease;
+    animation-delay: 0.2s;
+
+    & span {
+      display: flex;
+      gap: u.em(5px);
+
+      & h6 {
+        font-size: u.rem(15px);
+        font-weight: 600;
+        color: u.$text-p-shader1;
+      }
+
+      & p {
+        font-size: u.rem(15px);
+        color: u.$text-primary;
+        font-weight: 400;
+      }
+    }
+
+    & button {
+      font-family: u.$font;
+      background-color: transparent;
+      border: none;
+      text-decoration: underline;
+      color: u.$text-primary;
+      font-size: u.rem(16px);
+      margin-top: u.em(12.5px);
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        color: u.$green-additional;
+      }
+    }
+  }
+}

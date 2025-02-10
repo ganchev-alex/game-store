@@ -7,6 +7,8 @@
   width: 87.5%;
   height: fit-content;
   margin: u.em(45px) auto u.em(5px);
+  position: relative;
+  z-index: 20;
 
   & h3 {
     color: u.$text-primary;
@@ -63,8 +65,10 @@
     background-color: u.$primary-shader2;
     border: u.$primary-shader1 2px solid;
     border-radius: 5px;
+    position: relative;
+    overflow: visible;
 
-    & img {
+    & > img {
       height: 22.5px;
       width: 22.5px;
     }

@@ -15,7 +15,8 @@ const fetchStorePage = async function (
   genres?: string,
   tags?: string,
   ordering?: string,
-  dates?: string
+  platforms?: string,
+  stores?: string
 ) {
   try {
     const response = await fetch(
@@ -25,7 +26,9 @@ const fetchStorePage = async function (
         genres ? `&genres=${genres}` : ""
       }${tags ? `&tags=${tags}` : ""}${
         ordering ? `&ordering=${ordering}` : ""
-      }${dates ? `&dates=${dates}` : ""}`,
+      }&platforms=${platforms ? platforms : "1,4,5,7,18"}${
+        stores ? `&stores=${stores}` : ""
+      }&dates=2013-01-01,2025-12-31&metacritic=55,100`,
       {
         cache: "force-cache",
       }
@@ -56,12 +59,12 @@ export default async function Store({
     searchParams.genres as string | undefined,
     searchParams.tags as string | undefined,
     searchParams.ordering as string | undefined,
-    searchParams.dates as string | undefined
+    searchParams.platforms as string | undefined
   );
 
   return (
     <>
-      <TitleFilter />
+      <TitleFilter totalResults={totalResults} />
       <div className={styles["hidder"]} />
       <div className={styles.layout}>
         <AsideFilter />
