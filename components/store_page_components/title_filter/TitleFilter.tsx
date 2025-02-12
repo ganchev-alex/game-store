@@ -18,7 +18,6 @@ const TitleFilter: React.FC<{ totalResults: number }> = function ({
   const [results, setResults] = useState<IGameResult[]>([]);
 
   const searchForResults = async function () {
-    console.log(search);
     try {
       const response = await fetch(
         `${"https://api.rawg.io/api"}/games?key=${

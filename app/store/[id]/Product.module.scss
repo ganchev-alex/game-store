@@ -1,0 +1,22 @@
+@use "../../../scss/util" as u;
+
+.main {
+  width: 87.5%;
+  height: fit-content;
+  min-height: 300px;
+  border: white 1px solid;
+  margin: 0 auto;
+  margin-top: u.em(105px);
+  display: flex;
+
+  &__primary {
+    width: 72.5%;
+    height: fit-content;
+    border: yellow 1px solid;
+  }
+}
+
+.filler {
+  width: u.em(300px);
+  height: 100%;
+}

@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 
 import { IGameResult } from "@/utility/interfaces/IGameResult";
@@ -8,16 +9,23 @@ import macSrc from "../../../public/assets/icons/mac-os-logo.png";
 import xboxSrc from "../../../public/assets/icons/xbox-logo.png";
 import playStationSrc from "../../../public/assets/icons/play-station.png";
 import nintendoSrc from "../../../public/assets/icons/nintendo-switch.png";
+import { useRouter } from "next/navigation";
 
 const SearchResults: React.FC<{
   searchResults: IGameResult[];
   resetSearch: () => void;
 }> = function ({ searchResults, resetSearch }) {
+  const router = useRouter();
+
   return (
     <>
       <div className={styles.results}>
         {searchResults.map((r) => (
-          <div className={styles["slot"]}>
+          <div
+            key={r.id}
+            className={styles["slot"]}
+            onClick={() => router.push(`/store/${r.id}`)}
+          >
             <img className={styles["slot__thumb"]} src={r.background_image} />
             <div>
               <h4>{r.name}</h4>

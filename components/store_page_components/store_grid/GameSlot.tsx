@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { IGameResult } from "@/utility/interfaces/IGameResult";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 import styles from "./GameSlot.module.scss";
@@ -15,6 +16,7 @@ import cartSrc from "../../../public/assets/icons/cart.png";
 import fallBackBackground from "../../../public/assets/images/fallback_background.webp";
 
 const GameSlot: React.FC<{ gameData: IGameResult }> = function ({ gameData }) {
+  const router = useRouter();
   const [hoveredIndicator, setHoveredIndicator] = useState(0);
 
   return (
@@ -28,6 +30,9 @@ const GameSlot: React.FC<{ gameData: IGameResult }> = function ({ gameData }) {
         damping: 20,
       }}
       onMouseLeave={() => setHoveredIndicator(0)}
+      onClick={() => {
+        router.push(`/store/${gameData.id}`);
+      }}
     >
       <div className={styles.visuals}>
         <Image

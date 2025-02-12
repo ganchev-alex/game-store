@@ -10,7 +10,10 @@ import styles from "./HomeNavigation.module.scss";
 import searchSrc from "../../../public/assets/icons/search.png";
 import SearchResults from "@/components/store_page_components/search/SearchResults";
 
-const HomeNavigation: React.FC = function () {
+const HomeNavigation: React.FC<{
+  customTopOffset?: number;
+  customWidth?: number;
+}> = function ({ customTopOffset, customWidth }) {
   const [search, setSearch] = useState("");
   const [results, setResults] = useState<IGameResult[]>([]);
 
@@ -47,7 +50,13 @@ const HomeNavigation: React.FC = function () {
   }, [search]);
 
   return (
-    <nav className={styles.navigation}>
+    <nav
+      className={styles.navigation}
+      style={{
+        top: customTopOffset ? `${customTopOffset}em` : undefined,
+        width: customWidth ? `${customWidth}%` : undefined,
+      }}
+    >
       <span className={styles.links}>
         <div className={styles["links__prime"]}>
           <Link href="#">Your Store</Link>
