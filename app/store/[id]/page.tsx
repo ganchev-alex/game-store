@@ -3,6 +3,8 @@ import HomeNavigation from "@/components/home_page_components/primary_carousel/H
 import styles from "./Product.module.scss";
 import { IGameResult } from "@/utility/interfaces/IGameResult";
 import Gallery from "@/components/product_page_components/gallery/Gallery";
+import Description from "@/components/product_page_components/description/Description";
+import Additions from "@/components/product_page_components/additions/Additions";
 
 const getProductData = async function (productId: string) {
   try {
@@ -97,11 +99,30 @@ const getProductTrailers = async function (productId: string) {
   }
 };
 
+const getProductAdditions = async function (productId: string) {
+  try {
+    const response = await fetch(
+      `${process.env.API_ROOT}/games/${productId}/additions?key=${process.env.API_KEY}`,
+      { cache: "force-cache" }
+    );
+
+    const responseData = await response.json();
+    if (response.ok) {
+      return responseData.results as IGameResult[];
+    } else {
+      return [] as IGameResult[];
+    }
+  } catch {
+    return [] as IGameResult[];
+  }
+};
+
 export default async function Product({ params }: { params: { id: string } }) {
-  const [productData, screenshots, trailers] = await Promise.all([
+  const [productData, screenshots, trailers, additions] = await Promise.all([
     getProductData(params.id),
     getProductScreenshots(params.id),
     getProductTrailers(params.id),
+    getProductAdditions(params.id),
   ]);
 
   return (
@@ -119,6 +140,17 @@ export default async function Product({ params }: { params: { id: string } }) {
                 return { ...t, type: "trailer" };
               })}
             />
+            <Description
+              description={productData.description_raw}
+              genres={productData.genres.map((g) => g.name)}
+              lastUpdated={productData.updated}
+            />
+            {additions.length > 0 && (
+              <Additions
+                additions={additions}
+                fallBackImage={productData.background_image}
+              />
+            )}
           </section>
           <aside className={styles["main__aside"]}></aside>
         </main>

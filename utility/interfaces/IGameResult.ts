@@ -49,4 +49,5 @@ export interface IGameResult {
   short_screenshots: { id: number; image: string }[];
   parent_platforms: { platform: { id: number; name: string; slug: string } }[];
   genres: { id: number; name: string; slug: string }[];
+  description_raw?: string;
 }

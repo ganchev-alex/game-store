@@ -1,0 +1,36 @@
+@use "../../../scss/util" as u;
+
+.details {
+  padding: 0 u.em(60px);
+  width: 95%;
+  margin-top: u.em(55px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: u.em(37.5px);
+  justify-content: space-between;
+
+  &__description {
+    font-size: u.rem(15px);
+    font-weight: 400;
+    color: u.$text-p-shader1;
+    width: 100%;
+  }
+
+  &__additional {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    border-left: u.$text-secondary 2px solid;
+    padding-left: u.em(16px);
+
+    & h6 {
+      color: u.$text-secondary;
+      font-size: u.rem(16px);
+    }
+
+    & p {
+      color: u.$text-primary;
+      font-size: u.rem(18px);
+    }
+  }
+}

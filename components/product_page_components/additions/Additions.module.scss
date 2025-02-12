@@ -1,0 +1,103 @@
+@use "../../../scss/util" as u;
+
+.additions {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  padding: 0 u.em(60px);
+  gap: u.em(20px);
+
+  &__title {
+    color: u.$text-primary;
+    font-size: u.rem(22.5px);
+    margin-top: u.em(50px, 22.5px);
+    text-transform: uppercase;
+  }
+
+  &__preview {
+    width: 100%;
+    height: u.em(150px);
+    display: flex;
+
+    & img {
+      width: 35%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 2.5px;
+      transition: all 0.3s ease;
+    }
+
+    &:hover img {
+      filter: brightness(122.5%);
+    }
+  }
+
+  &__details {
+    width: 47.5%;
+    padding: 0 u.em(20px);
+
+    & h5 {
+      color: u.$text-primary;
+      font-weight: 500;
+      font-size: u.rem(18px);
+    }
+
+    & h6 {
+      color: u.$text-secondary;
+      font-size: u.rem(15.5px);
+      font-weight: 500;
+      margin: u.em(10px) 0;
+
+      & span {
+        color: u.$text-primary;
+      }
+    }
+  }
+
+  &__payment {
+    display: flex;
+    flex-direction: column;
+    width: 18%;
+    justify-content: flex-end;
+    align-items: center;
+    gap: u.em(10px);
+
+    & button {
+      font-family: u.$font;
+      font-size: u.rem(15.5px);
+      font-weight: 600;
+      padding: u.em(6.5px) u.em(35px);
+      width: 100%;
+      height: fit-content;
+      background: transparent;
+      border: u.$text-primary 2px solid;
+      text-transform: uppercase;
+      color: u.$text-primary;
+      cursor: pointer;
+    }
+  }
+
+  &__prices {
+    display: flex;
+    width: 100%;
+    justify-content: end;
+    align-items: stretch;
+    gap: u.em(15px);
+    font-size: u.rem(16.5px);
+
+    &--discount {
+      color: u.$labels-shader3;
+      padding: 0 u.em(4.5px);
+      background-color: u.$labels-primary;
+    }
+
+    &--old {
+      color: u.$text-secondary;
+      text-decoration: line-through;
+    }
+
+    &--current {
+      color: u.$text-primary;
+    }
+  }
+}

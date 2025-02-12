@@ -58,6 +58,7 @@ const Gallery: React.FC<{
           controls
           autoPlay
           muted
+          loop
           poster={slides[selectedSlot].preview}
         >
           <source src={slides[selectedSlot].data.max} type="video/mp4" />

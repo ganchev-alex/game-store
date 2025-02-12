@@ -99,6 +99,7 @@
       margin-top: u.em(12.5px);
       cursor: pointer;
       transition: all 0.3s ease;
+      width: fit-content;
 
       &:hover {
         color: u.$green-additional;
